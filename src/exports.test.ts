@@ -36,6 +36,7 @@ describe('customExports', () => {
 					{
 						type: 'chunk',
 						name: 'index.d',
+						isEntry: true,
 						outDir: '/project/dist',
 						fileName: 'index.d.mts',
 					},
@@ -44,6 +45,7 @@ describe('customExports', () => {
 					{
 						type: 'chunk',
 						name: 'index.d',
+						isEntry: true,
 						outDir: '/project/dist',
 						fileName: 'index.d.cts',
 					},
@@ -167,6 +169,7 @@ describe('customExports', () => {
 					{
 						type: 'chunk',
 						name: 'index.d',
+						isEntry: true,
 						outDir: '/project/dist',
 						fileName: 'index.d.mts',
 					},
@@ -175,6 +178,7 @@ describe('customExports', () => {
 					{
 						type: 'chunk',
 						name: 'index.d',
+						isEntry: true,
 						outDir: '/project/dist',
 						fileName: 'index.d.cts',
 					},
@@ -204,6 +208,7 @@ describe('customExports', () => {
 					{
 						type: 'chunk',
 						name: 'index.d',
+						isEntry: true,
 						outDir: '/project/packages/core/dist',
 						fileName: 'index.d.mts',
 					},
@@ -263,6 +268,7 @@ describe('customExports', () => {
 					{
 						type: 'chunk',
 						name: 'index.d',
+						isEntry: true,
 						outDir: '/project/dist',
 						fileName: 'index.d.mts',
 					},
@@ -271,6 +277,7 @@ describe('customExports', () => {
 					{
 						type: 'chunk',
 						name: 'index.d',
+						isEntry: true,
 						outDir: '/project/dist',
 						fileName: 'index.d.cts',
 					},
@@ -303,5 +310,159 @@ describe('customExports', () => {
 
 		const result = await customExports(exportsObj, ctx as any)
 		expect(result['.'].import).toBe(originalValue)
+	})
+
+	it('should handle right types', async () => {
+		const exports = {
+			'./core': {
+				import: './dist/core/index.js',
+				require: './dist/core/index.cjs',
+			},
+			'./svelte': {
+				import: './dist/svelte/index.js',
+				require: './dist/svelte/index.cjs',
+			},
+			'./vue': {
+				import: './dist/vue/index.js',
+				require: './dist/vue/index.cjs',
+			},
+			'./package.json': './package.json',
+		}
+		const ctx = {
+			pkg: {
+				packageJsonPath: '/project/package.json',
+			},
+			chunks: {
+				cjs: [
+					{
+						fileName: 'core/index.cjs',
+						name: 'core/index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'core/index.d.cts',
+						name: 'core/index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'svelte/index.cjs',
+						name: 'svelte/index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'svelte/index.d.cts',
+						name: 'svelte/index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'svelte/index.svelte.cjs',
+						name: 'svelte/index.svelte',
+						isEntry: false,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'svelte/index.svelte.d.cts',
+						name: 'svelte/index.svelte.d',
+						isEntry: false,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'vue/index.cjs',
+						name: 'vue/index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'vue/index.d.cts',
+						name: 'vue/index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+				],
+				es: [
+					{
+						fileName: 'core/index.d.ts',
+						name: 'core/index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'core/index.js',
+						name: 'core/index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'svelte/index.d.ts',
+						name: 'svelte/index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'svelte/index.js',
+						name: 'svelte/index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'svelte/index.svelte.d.ts',
+						name: 'svelte/index.svelte.d',
+						isEntry: false,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'svelte/index.svelte.js',
+						name: 'svelte/index.svelte',
+						isEntry: false,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'vue/index.d.ts',
+						name: 'vue/index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'vue/index.js',
+						name: 'vue/index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+				],
+			},
+		}
+
+		const result = await customExports(exports, ctx as any)
+
+		for (const name of ['core', 'vue', 'svelte']) {
+			expect(result[`./${name}`].import).toEqual({
+				types: `./dist/${name}/index.d.ts`,
+				default: `./dist/${name}/index.js`,
+			})
+			expect(result[`./${name}`].require).toEqual({
+				types: `./dist/${name}/index.d.cts`,
+				default: `./dist/${name}/index.cjs`,
+			})
+		}
 	})
 })
