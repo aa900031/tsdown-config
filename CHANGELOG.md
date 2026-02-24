@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 
+## v0.2.0
+
+[compare changes](https://github.com/aa900031/tsdown-config/compare/v0.1.1...v0.2.0)
+
+### 🚀 Enhancements
+
+-  Presets (#7) ([0a3d585](https://github.com/aa900031/tsdown-config/commit/0a3d585a8609f7191e79e75bf5efe0c884151155))
+
+### 📖 Documentation
+
+-  Correct the license link ([e3d9156](https://github.com/aa900031/tsdown-config/commit/e3d915698cab230baed6d4575b8c7e473cdeaa25))
+
+
+
+#### ❤️ Contributors
+
+- Zhong666 <aa900031@gmail.com>
+
 ## v0.1.1
 
 [compare changes](https://github.com/aa900031/tsdown-config/compare/v0.1.0...v0.1.1)
