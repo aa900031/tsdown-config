@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 
+## v0.1.1
+
+[compare changes](https://github.com/aa900031/tsdown-config/compare/v0.1.0...v0.1.1)
+
+### 🩹 Fixes
+
+-  CustomExports correct types path ([3234e1b](https://github.com/aa900031/tsdown-config/commit/3234e1b1f97752dfeb144360c9008f24262a7cad))
+
+
+
+#### ❤️ Contributors
+
+- Zhong666 <aa900031@gmail.com>
+
 ## v0.1.0
 
 
