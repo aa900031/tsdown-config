@@ -26,7 +26,7 @@ describe('preset', () => {
 				'src/main.ts',
 			]
 			const config = base({ entry: customEntry })
-			expect(config.entry).toBe(customEntry)
+			expect(config.entry).toEqual(customEntry)
 		})
 
 		it('should merge overrides config', () => {
