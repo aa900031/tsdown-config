@@ -33,4 +33,4 @@ export default defineConfig({
 
 Made with ❤️
 
-Published under the [MIT License](https://github.com/aa900031/ginjou/blob/main/LICENSE).
+Published under the [MIT License](https://github.com/aa900031/tsdown-config/blob/main/LICENSE).
