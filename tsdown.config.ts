@@ -1,23 +1,5 @@
-import { defineConfig } from 'tsdown'
-import { customExports } from './src'
+import { node } from './src'
 
-export default defineConfig({
-	platform: 'node',
-	shims: true,
-	entry: [
-		'src/index.ts',
-	],
+export default node({}, {
 	format: ['esm', 'cjs'],
-	clean: true,
-	exports: {
-		devExports: true,
-		customExports,
-	},
-	dts: {
-		compilerOptions: {
-			composite: false,
-			preserveSymlinks: false,
-		},
-		tsconfig: './tsconfig.app.json',
-	},
 })
