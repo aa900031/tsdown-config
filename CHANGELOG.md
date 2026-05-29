@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 
+## v0.2.1
+
+[compare changes](https://github.com/aa900031/tsdown-config/compare/v0.2.0...v0.2.1)
+
+### 🩹 Fixes
+
+-  Peer deps version range of tsdown ([20c6f1d](https://github.com/aa900031/tsdown-config/commit/20c6f1d1c5be7b70f1f8dc66b2c93228d2d1a19d))
+
+### 🏡 Chore
+
+-  **ci:** Add typecheck ([931b7d0](https://github.com/aa900031/tsdown-config/commit/931b7d04b6a6eb45a0497950d6c7cda263222121))
+-  **deps:** Upgrade nodejs to v24 & pnpm to v11 ([38dbdb3](https://github.com/aa900031/tsdown-config/commit/38dbdb37a97679b597064ad5c3df05398f067e14))
+-  **deps:** Upgrade release-it to v20 ([b2f536b](https://github.com/aa900031/tsdown-config/commit/b2f536b07ef1e71f23a819f6911ff369fe0516a9))
+-  **deps:** Upgrade tsdown ([f47510a](https://github.com/aa900031/tsdown-config/commit/f47510a3beb45cdf7d3597f75087bde2e8d0ed7f))
+-  **deps:** Upgrade vitest to v4 ([f27f933](https://github.com/aa900031/tsdown-config/commit/f27f9333a044488b59a4cf499ce475d56c55f8a5))
+
+
+
+#### ❤️ Contributors
+
+- Zhong666 <aa900031@gmail.com>
+
 ## v0.2.0
 
 [compare changes](https://github.com/aa900031/tsdown-config/compare/v0.1.1...v0.2.0)
