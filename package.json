@@ -45,6 +45,7 @@
 		"lint": "eslint . --cache --cache-location ./node_modules/.cache/eslint",
 		"release": "release-it",
 		"build": "tsdown",
+		"typecheck": "tsc --noEmit",
 		"test": "vitest run",
 		"bench": "vitest bench --run --project benchmark"
 	},
