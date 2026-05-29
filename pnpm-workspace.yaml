@@ -6,5 +6,8 @@ trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 43200
 autoInstallPeers: false
 
+trustPolicyExclude:
+  - tinyexec@1.2.2 # https://github.com/tinylibs/tinyexec/issues/136
+
 allowBuilds:
   esbuild: true
