@@ -50,7 +50,7 @@
 		"bench": "vitest bench --run --project benchmark"
 	},
 	"peerDependencies": {
-		"tsdown": "^0.0.0"
+		"tsdown": ">=0.0.0 <1.0.0"
 	},
 	"devDependencies": {
 		"@aa900031/eslint-config": "^6.0.0",
