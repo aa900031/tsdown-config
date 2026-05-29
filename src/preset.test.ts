@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { base, lib, node, vue } from './preset'
+import { base, lib, node, vue } from './preset.ts'
 
 describe('preset', () => {
 	describe('base', () => {

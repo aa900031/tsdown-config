@@ -3,12 +3,12 @@
 	"compilerOptions": {
 		"composite": true,
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-		"module": "ESNext",
-		"moduleResolution": "Bundler",
 		"types": [
 			"node"
 		],
-		"allowJs": true
+		"allowImportingTsExtensions": true,
+		"allowJs": true,
+		"emitDeclarationOnly": true
 	},
 	"include": [
 		"src/**/*.ts"

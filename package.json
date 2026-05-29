@@ -60,7 +60,7 @@
 		"@vitest/coverage-istanbul": "^4.1.7",
 		"eslint": "^9.39.3",
 		"release-it": "^19.2.4",
-		"tsdown": "^0.20.3",
+		"tsdown": "^0.22.0",
 		"typescript": "^5.9.3",
 		"vitest": "^4.1.7"
 	}

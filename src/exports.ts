@@ -1,7 +1,10 @@
 import type { ExportsOptions, RolldownChunk } from 'tsdown'
 import * as path from 'node:path'
 
-export const customExports: NonNullable<ExportsOptions['customExports']> = (
+export const customExports: Extract<
+	ExportsOptions['customExports'],
+	(...args: any[]) => any
+> = (
 	exports,
 	ctx,
 ) => {

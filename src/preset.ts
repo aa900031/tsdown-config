@@ -1,6 +1,6 @@
 import type { TsdownInputOption, UserConfig } from 'tsdown'
 import { mergeConfig } from 'tsdown'
-import { customExports } from './exports'
+import { customExports } from './exports.ts'
 
 export interface BaseOptions {
 	/**

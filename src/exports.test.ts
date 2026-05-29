@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { customExports } from './exports'
+import { customExports } from './exports.ts'
 
 describe('customExports', () => {
 	it('should handle null or non-object config values', async () => {

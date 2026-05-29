@@ -1,2 +1,2 @@
-export * from './exports'
-export * from './preset'
+export * from './exports.ts'
+export * from './preset.ts'
