@@ -40,9 +40,22 @@ function findTypeChunk(
 	chunks: RolldownChunk[],
 	targetName: string,
 ): RolldownChunk | null {
-	return (targetName && chunks.find(chunk => isEntryChunk(chunk) && chunk.name === targetName))
-		|| chunks.find(chunk => isEntryChunk(chunk) && chunk.name.endsWith('.d'))
-		|| null
+	// First try exact match (e.g., "core/index.d" for output "./core" with src/core/index.ts)
+	const exactMatch = chunks.find(chunk => isEntryChunk(chunk) && chunk.name === targetName)
+	if (exactMatch)
+		return exactMatch
+
+	// For flat entries (e.g., "kit.d" for output "./kit" with src/kit.ts),
+	// extract the base name from the path and look for it with .d suffix
+	const baseName = targetName.split('/')[0]
+	if (baseName !== 'index') {
+		const flatMatch = chunks.find(chunk => isEntryChunk(chunk) && chunk.name === `${baseName}.d`)
+		if (flatMatch)
+			return flatMatch
+	}
+
+	// Fallback: use the first .d chunk found (for cases with single entry point used by multiple exports)
+	return chunks.find(chunk => isEntryChunk(chunk) && chunk.name.endsWith('.d')) || null
 }
 
 function isEntryChunk(

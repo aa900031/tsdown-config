@@ -465,4 +465,202 @@ describe('customExports', () => {
 			})
 		}
 	})
+
+	it('should handle nested entry points', async () => {
+		const exports = {
+			'.': {
+				import: './dist/index.mjs',
+				require: './dist/index.cjs',
+			},
+			'./kit': {
+				import: './dist/kit/index.mjs',
+				require: './dist/kit/index.cjs',
+			},
+		}
+		const ctx = {
+			pkg: {
+				packageJsonPath: '/project/package.json',
+			},
+			chunks: {
+				es: [
+					{
+						fileName: 'index.d.mts',
+						name: 'index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'index.mjs',
+						name: 'index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'kit/index.d.mts',
+						name: 'kit/index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'kit/index.mjs',
+						name: 'kit/index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+				],
+				cjs: [
+					{
+						fileName: 'index.d.cts',
+						name: 'index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'index.cjs',
+						name: 'index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'kit/index.d.cts',
+						name: 'kit/index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'kit/index.cjs',
+						name: 'kit/index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+				],
+			},
+		}
+
+		const result = await customExports(exports, ctx as any)
+
+		expect(result['.'].import).toEqual({
+			types: './dist/index.d.mts',
+			default: './dist/index.mjs',
+		})
+		expect(result['.'].require).toEqual({
+			types: './dist/index.d.cts',
+			default: './dist/index.cjs',
+		})
+		expect(result['./kit'].import).toEqual({
+			types: './dist/kit/index.d.mts',
+			default: './dist/kit/index.mjs',
+		})
+		expect(result['./kit'].require).toEqual({
+			types: './dist/kit/index.d.cts',
+			default: './dist/kit/index.cjs',
+		})
+	})
+
+	it('should handle flat entry points', async () => {
+		const exports = {
+			'.': {
+				import: './dist/index.js',
+				require: './dist/index.cjs',
+			},
+			'./kit': {
+				import: './dist/kit.js',
+				require: './dist/kit.cjs',
+			},
+		}
+		const ctx = {
+			pkg: {
+				packageJsonPath: '/project/package.json',
+			},
+			chunks: {
+				es: [
+					{
+						fileName: 'index.d.ts',
+						name: 'index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'index.js',
+						name: 'index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'kit.d.ts',
+						name: 'kit.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'kit.js',
+						name: 'kit',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+				],
+				cjs: [
+					{
+						fileName: 'index.d.cts',
+						name: 'index.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'index.cjs',
+						name: 'index',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'kit.d.cts',
+						name: 'kit.d',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+					{
+						fileName: 'kit.cjs',
+						name: 'kit',
+						isEntry: true,
+						type: 'chunk',
+						outDir: '/project/dist',
+					},
+				],
+			},
+		}
+
+		const result = await customExports(exports, ctx as any)
+
+		expect(result['.'].import).toEqual({
+			types: './dist/index.d.ts',
+			default: './dist/index.js',
+		})
+		expect(result['.'].require).toEqual({
+			types: './dist/index.d.cts',
+			default: './dist/index.cjs',
+		})
+		expect(result['./kit'].import).toEqual({
+			types: './dist/kit.d.ts',
+			default: './dist/kit.js',
+		})
+		expect(result['./kit'].require).toEqual({
+			types: './dist/kit.d.cts',
+			default: './dist/kit.cjs',
+		})
+	})
 })
