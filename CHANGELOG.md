@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 
+## v0.2.2
+
+[compare changes](https://github.com/aa900031/tsdown-config/compare/v0.2.1...v0.2.2)
+
+### 🩹 Fixes
+
+-  Flat entry points in customExports ([0689564](https://github.com/aa900031/tsdown-config/commit/0689564bcdc2f7b9523eb1bb2e453727e45cf942))
+
+### 🏡 Chore
+
+-  **deps:** Update npm non-major develop dependencies ([33a947d](https://github.com/aa900031/tsdown-config/commit/33a947d7eeefbcecf32b582d7898e17c689b3449))
+
+
+
+#### ❤️ Contributors
+
+- Zhong666 <aa900031@gmail.com>
+
 ## v0.2.1
 
 [compare changes](https://github.com/aa900031/tsdown-config/compare/v0.2.0...v0.2.1)
